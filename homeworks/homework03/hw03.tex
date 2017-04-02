@@ -1,0 +1,247 @@
+\documentclass[letterpaper,11pt]{amsart}
+
+\usepackage{amscd,amssymb,amsfonts,amsmath,amsthm,color}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{scrextend}
+
+\usepackage{calc}
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.5\ht\CBox-#1/2]{\wd\CBox}{#1}}
+
+
+\lstset{frame=lrbt,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,colframe=gray}
+
+
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% margins and style
+\pagestyle{plain}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6.0in}
+\setlength{\topmargin}{0.0in}
+\setlength{\textheight}{8.5in}
+\setlength{\headheight}{0in}
+\setlength{\parskip}{1.5mm}
+
+\linespread{1.2}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.3,0.3,0.3}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% theorems and all 
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% renewed commands: t, to, d , c, H
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shortcuts for tex commands
+
+\newcommand{\nc}{\newcommand}
+\newcommand{\rc}{\renewcommand}
+\nc{\mc}{\mathcal}
+\rc{\t}{\text}
+\nc{\loccit}{\emph{loc. cit. }}
+\nc\pf{\noindent Proof: }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Operators, functions etc
+\nc{\Hom}{\t{Hom}}
+\nc{\tot}{\t{tot}}
+\nc{\dual}{^{\vee}}
+\nc{\op}[1]{\operatorname{#1}}
+\nc{\coh}{\t{coh}}
+\nc{\iso}{\cong}
+\rc{\d}{\operatorname{d}}
+\nc{\Id}{\operatorname{Id}}
+\nc{\dgmod}{\operatorname{dg-mod}}
+\newcommand{\hdot}{^{\raisebox{0pt}{\text{\circle*{2}}}}}
+\nc{\compose}{\circ}
+\nc{\sheafsym}{\mathcal{S}\t{ym}}
+\nc{\rend}{\operatorname{REnd}}
+\nc{\rhom}{\operatorname{RHom}}
+\nc{\sheafrend}{\mathcal{R}\mc{E}\t{\emph{nd}}}
+\nc{\sheafrhom}{\mathcal{R}\mc{H}\t{\emph{om}}}
+\nc{\sheafhom}{\mathcal{H}\t{om}}
+\nc{\exterior}{{\textstyle\bigwedge\nolimits}}
+\nc{\ex}{\exterior}
+\nc{\cok}{\operatorname{Coker}}
+\rc{\ker}{\operatorname{Ker}}
+\nc{\im}{\operatorname{Im}}
+
+%tensor product
+\nc{\Lotimes}{{\overset{L}{\otimes}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arrows and signs
+\rc{\to}{\rightarrow}
+\nc{\ot}{\leftarrow}
+\nc\xto[1]{\xrightarrow{#1}}
+\nc{\too}{\longrightarrow}
+\nc{\oot}{\longleftarrow}
+\nc{\into}{\hookrightarrow}
+\nc{\mapsinto}{\hookrightarrow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Categories
+\nc{\D}{\operatorname{D}}
+\nc{\Dsg}{\D_{{sg}}}
+\nc{\Db}{\D^{{b}}}
+\nc{\Dbgr}{\Db_{{gr}}}
+\nc{\Dgr}{\D_{{gr}}}
+\nc{\Dsggr}{\Dsg^{{gr}}}
+\nc{\Cgr}{\operatorname{C}_{{gr}}}
+\nc{\cCgr}{\cC_{gr}}
+\nc{\cDgr}{\cD_{gr}}
+\nc{\cDsggr}{\cD_{gr}^{sg}}
+\nc{\cDbgr}{\cD_{gr}^{b}}
+\nc{\cDsg}{\cD_{sg}}
+\nc{\cDb}{\cD^{b}}
+\rc{\H}{\operatorname{H}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nice letters
+% cals
+\nc{\cA}{\mc{A}}\nc{\cB}{\mc{B}}\nc{\cC}{\mc{C}}\nc{\cD}{\mc{D}}\nc{\cE}{\mc{E}}\nc{\cF}{\mc{F}}\nc{\cG}{\mc{G}}\nc{\cH}{\mc{H}}\nc{\cI}{\mc{I}}\nc{\cJ}{\mc{J}}\nc{\cK}{\mc{K}}\nc{\cL}{\mc{L}}\nc{\cM}{\mc{M}}\nc{\cN}{\mc{N}}\nc{\cO}{\mc{O}}\nc{\cP}{\mc{P}}\nc{\cQ}{\mc{Q}}\nc{\cR}{\mc{R}}\nc{\cS}{\mc{S}}\nc{\cT}{\mc{T}}\nc{\cU}{\mc{U}}\nc{\cV}{\mc{V}}\nc{\cW}{\mc{W}}\nc{\cX}{\mc{X}}\nc{\cY}{\mc{Y}}\nc{\cZ}{\mc{Z}}
+% bbs
+\nc{\PP}{\mathbb{P}}
+\nc{\CC}{\mathbb{C}}
+\nc{\ZZ}{\mathbb{Z}}
+\nc{\HH}{\mathbb{H}}
+\nc{\NN}{\mathbb{N}}
+\nc{\QQ}{\mathbb{Q}}
+\nc{\RR}{\mathbb{R}}
+
+
+\nc{\code}[1]{{\texttt{#1}}}
+\nc{\mcode}[1]{{\text{\texttt{#1}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% other useful commands
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+\nc\note[1]{\marginpar{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Homework 3}
+\date{}
+\begin{document}
+\maketitle
+\begin{center}
+  \emph{Due Thursday, Feb 2, at 11pm}
+  \vspace{0.3in}
+  \end{center}
+
+
+\noindent Please enter your answers into a Jupyter notebook and submit by the deadline via canvas.
+
+\subsection*{Problem 1} Sieve of Erasthotenes. 
+
+Using the \code{isprime(n)} function from before, write a function \code{primes(m)} that returns a list of prime numbers between 1 and m. Approximately how many operations does it take to make this list?
+
+The sieve of erasthotenes is a method for producing these primes more efficiently. The idea is to start with a list of numbers, 
+$$2,3,4,5,6,7,8,9,10,\dots,m$$
+strike out all the multiples of 2 (starting from 4), 
+$$2,3,\hcancel[1.5pt]{4},5,\hcancel[1.5pt]{6},7,\hcancel[1.5pt]{8},9,\hcancel[1.5pt]{10},\dots,m$$
+then strike out all the multiples of the next unmarked number, which is 3,
+$$2,3,\hcancel[1.5pt]{4},5,\hcancel[1.5pt]{6},7,\hcancel[1.5pt]{8},\hcancel[1.5pt]{9},\hcancel[1.5pt]{10},\dots,m$$
+the the next\dots, which is 5\dots
+
+The remaning numbers are the prime numbers.
+
+Implement the sieve of Erasthotenes using Python lists and make a function \code{primes(m)} that returns a list of prime numbers between 1 and m.
+
+One thing you may (or may not) find useful is to create a list where every element is the same. \code{xs = [0 for i in range(10)]} will have value \code{[0,0,0,0,0,0,0,0,0,0]}. 
+
+\subsection*{Problem 2} Quick problems about lists. Use list comprehension (i.e. the \code{[blah for i in some\_list]}) syntax, and list comprehension with \code{if}, i.e. (i.e. the \code{[blah for i in some\_list if some\_condition]}), list concatenation, number*list etc. (try not to use for loops). 
+
+Produce the following lists in Python. 
+\begin{enumerate}
+  \item \code{[1,3,5,7,..,51]}
+  \item \code{[21,23,25,27,..,51]}
+  \item \code{[1,2,4,8,16,.., 1048576]}
+  \item \code{[1,-1,1,-1,..,1,-1]} (length 20)
+  \item \code{[0,1,1,1,..,1]} (length 20) 
+  \item \code{[1,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,..]} (length 100; looping might be easier for this one, but can you do it with only one loop?)
+\end{enumerate}
+
+\subsection*{Problem 3} For each of the following, write the described function. Please pay attention to the description of the function, some of them say to return a new list, which means that your function shouldn't modify \code{xs}, but should make a fresh list and return that; others (e.g. \code{reverse}) ask you to modify xs (these should return \code{xs} anyway). Check each function on at least two examples:
+
+\begin{enumerate}
+  \item \code{f(xs,k)}, returns the kth from last element of \code{xs}.\\ 
+    example: \code{f([1,2,3,4], 1)} should return \code{4}.\\
+    example: \code{f([1,2,3,4], 3)} should return \code{2}.
+  \item \code{damean(xs)}, returns the mean (average) of the elements of xs.\\
+    example: \code{damean([1,2,3,4])} should return \code{2.5}.
+  \item \code{appearso(xs,ys)} returns the number of times \code{xs} appears in \code{ys} as a subsequence.\\
+    example: \code{appearso([1,2],[1,2,3,4,1,1,2,1])} should return \code{2}.
+  \item \code{reverse(xs)}, reverses the order of the lements of \code{xs} and returns \code{xs}. \\
+    example: if \code{xs = [1,2,3,4]}, then \code{reverse(xs)} should return \code{[4,3,2,1]}, and afterwards if we print \code{xs}, we should see \code{[4,3,2,1]}.
+  \item \code{shift(cs)}, shifts the elements to the left by one, i.e. \code{shift([1,2,3,4])} is \code{[2,3,4,1]}, and returns \code{xs}.
+  \item \code{ispalin(xs)} returns True if xs is a palindrome (a palindrom is a sequnce that is the same in reverse, example: ``amanaplanacanalpanama''). 
+  \item \code{no\_duplicate(xs)}, returns a new list with the same elements as x but without any duplicate elements. \\
+    example: \code{no\_duplicate([1,2,3,8,1,4,4,5,1])} returns \code{[1,2,3,8,4,5]}.
+  \item \code{dupli(xs,k)}, returns a new list with the same elements as x but each one is duplicated k times. e.g. \code{dupli([1,2,3,2,4], 3)} is \code{[1,1,1,2,2,2,3,3,3,2,2,2,4,4,4]}. 
+\end{enumerate}
+
+\subsection*{Problem 4} Prime factorize like a boss. This is a hard problem. You may need to work on it for a long time, start from small numbers and simple examples and don't get discouraged!
+
+The aim is to print out all the prime factors of numbers 1,\dots,m. The first idea for the algorithm would be the following:
+\begin{addmargin}{0.5in}
+for i in 1,...,m\\
+\indent print: factors of i are:\\
+\indent for j in 1,\dots,i\\
+\indent\indent if j is prime and divides i, print j (as many times as it divides i)\\
+\end{addmargin}
+But this would be very inefficient because if we are trying to factorize, say 54, and we know 2 is a factor, then finding the remaining factors is the same as finding the factors of 27, which we may have already factorized.  
+The idea for this problem is to use lists to store values that we compute so that we don't do redundant computations.
+
+The underlying mathematical point is that if $p$ is a prime that divides $n$, then the prime factors of $n$, are $p$ and the prime factors of $n/p$. 
+
+We will use a lists of lists to keep the factors of the smaller numbers:
+\begin{lstlisting}[language=Python]
+m = 20
+pfactors = [[] for i in range(m)]
+
+for i in range(2,m):
+  ... find the first prime factor j of i, 
+  ... add the previously computed factors of j to the factors of i (factors[i].extend(?))  
+  ... add j to the factors of i, by using factors[i].append(?)
+\end{lstlisting}
+
+Print out all the factors up to $m = 200$.
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+

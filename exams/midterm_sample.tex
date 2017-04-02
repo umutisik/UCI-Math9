@@ -1,0 +1,150 @@
+
+\documentclass[addpoints,12pt]{exam}
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{scrextend}
+
+\lstset{frame=l,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,colframe=gray}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+
+\newcommand{\code}[1]{{\texttt{#1}}}
+\newcommand{\mcode}[1]{{\text{\texttt{#1}}}}
+
+\linespread{1.2}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.3,0.3,0.3}
+
+
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Math 9}{\,}{Sample Midterm}
+\runningheader{Math 3A}
+              {\,}
+              {Midterm ver A, Page \thepage\ of \numpages}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{expectation}{Expectation}
+
+\newcommand{\RR}{\mathbb{R}}
+
+\begin{document}
+\begin{center}
+\fbox{\fbox{\parbox{5.5in}{\centering
+{\tt Directions:} The exam is 50 minutes long. Please read each question carefully. 
+\vspace{10pt}
+
+{\sc each question is worth 20 points}
+When asked to write code, you should write working Python code that has correct syntax. 
+
+Use the backs of the pages if needed.
+}}}
+\end{center}
+
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{Last Name:\enspace\hrulefill}
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{First Name:\enspace\hrulefill}
+
+\vspace{0.2in}
+
+\makebox[\textwidth]{Student ID \#:\enspace\hrulefill}
+
+\vspace{0.2in}
+
+\vspace{1in}
+
+\gradetable
+
+\newpage
+
+\begin{questions}
+
+\question[20]
+Write down the output of the following programs.
+
+\begin{enumerate}
+  \item 
+\begin{lstlisting}[language=python]
+i = 5 
+while i < 100:
+  print(i)
+  i *= 2 
+print(i)
+\end{lstlisting}
+    \vfill
+
+\item 
+\begin{lstlisting}[language=python]
+def f(n):
+    for i in range(10):
+        if i > n:
+            continue
+        n = n // 2
+    return n
+
+print(f(256))
+\end{lstlisting}
+
+    \vfill
+
+  \item 
+\begin{lstlisting}[language=python]
+def g(n):
+  if n == 0:
+    return [] 
+  return [n % 2] + g(n // 2) 
+
+print(g(255))
+\end{lstlisting}
+
+    \vfill
+\end{enumerate}
+
+\newpage
+\question[20] Produce the following lists using list comprehension:
+\begin{enumerate}
+  \item \code{[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4]}
+    \vfill
+  \item \code{[1,-1,2,-2,3,-3,4,-4,5,-5]}
+    \vfill
+  \item \code{[12,10,8,6,4,2,0,0,0,0]}
+    \vfill
+\end{enumerate}
+
+\newpage
+\question[20] Write down the output of the following code:
+
+\begin{enumerate}
+  \item (10 pts) 
+\begin{lstlisting}[language=python]
+reduce(lambda x, y: x*y, range(1,7))
+\end{lstlisting}
+\vfill
+  \item (10 pts)
+    \begin{lstlisting}[language=python] 
+reduce(lambda a,d: 10*a+d, [1,2,3,4,5,6,7,8])
+\end{lstlisting}
+\vfill
+
+\end{enumerate}
+
+
+\newpage
+\question[20] Write down a Python function \code{spread(xs)} that will return the difference between the largest and smallest element of a list \code{xs}. (e.g. \code{spread([1,2,-1,5,10,12,0,0,4])} is \code{13}) (To receive full marks, you need to write a little explanation of which part of your code does what)
+
+
+\newpage
+\question[20] Write down a Pyhon function \code{gcd(x,y)} that returns the greatest common divisor of two positive integers \code{x} and \code{y}. (To receive full marks, you need to write a little explanation of which part of your code does what) 
+\end{questions}
+\end{document}

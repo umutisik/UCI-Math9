@@ -1,0 +1,7 @@
+*__pycache*
+*.un~*
+*.swp*
+*.aux*
+*.log*
+.DS*
+*.ipynb_checkpoints*
